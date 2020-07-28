@@ -3,7 +3,9 @@ unity_root:  &unity_root '../Unity'
 unity_source: &unity_source '../Unity/src/'
 compiler:
   path: gcc
-  source_path:     &source_path 'gpio_driver/'
+  gpio_hal_path:   &gpio_hal_path 'src/gpio_hal'
+  include_path:    &include_path 'inc/'
+  source_path:     &source_path 'src/'
   unit_tests_path: &unit_tests_path 'test/'
   build_path:      &build_path 'build/'
   options:
@@ -17,8 +19,8 @@ compiler:
     prefix: '-I'
     items:
       - *source_path
-      - 'inc/'
-      - 'gpio_driver/gpio_stm32f303xe'
+      - *include_path
+      - *gpio_hal_path
       - *unity_source
       - *unit_tests_path
   defines:
