@@ -1,0 +1,3 @@
+[submodule "src/gpio_hal"]
+	path = src/gpio_hal
+	url = https://github.com/Ackleberry/gpio_hal.git
