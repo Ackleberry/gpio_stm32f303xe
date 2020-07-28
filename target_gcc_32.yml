@@ -10,7 +10,7 @@ compiler:
   build_path:      &build_path 'build/'
   options:
     - '-c'
-    - '-m64'
+    - '-m32'
     - '-Wall'
     - '-Wno-address'
     - '-std=c99'
@@ -36,7 +36,7 @@ linker:
   path: gcc
   options:
     - -lm
-    - '-m64'
+    - '-m32'
   includes:
     prefix: '-I'
   object_files:
