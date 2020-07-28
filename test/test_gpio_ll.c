@@ -6,7 +6,7 @@
  */
 
 #include "unity.h"
-#include "gpio.h"
+#include "gpio_hal.h"
 
 #define FLAG32(bit) (1UL << (bit))
 
