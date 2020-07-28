@@ -36,7 +36,7 @@ void test_GPIO_Set_ShouldSetOutputHigh(void)
    TEST_ASSERT_EQUAL_HEX32(FLAG32(0) | FLAG32(5) | FLAG32(15), GPIOA->BSRR);
 }
 
-void test_GPIO_Set_ShouldSetOutputLow(void)
+void test_GPIO_Clr_ShouldClearOutputLow(void)
 {
    GPIOA->BRR = 0xFFFFFFFF;
 
