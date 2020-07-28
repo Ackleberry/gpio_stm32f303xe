@@ -1,3 +1,0 @@
-[submodule "gpio_driver/gpio_stm32f303xe"]
-	path = gpio_driver/gpio_stm32f303xe
-	url = https://github.com/Ackleberry/gpio_stm32f303xe.git
