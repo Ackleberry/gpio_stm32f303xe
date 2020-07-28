@@ -87,6 +87,6 @@ typedef struct _Gpio_ll_Pin_t
  * @param[in] pin       pin number within the port register
  *
  */
-#define GPIO_LL_Clr(port, bit)   ( (port)->BRR &= ~(1 << (bit) ) )
+#define GPIO_LL_Clr(port, bit)   ( (port)->BRR |= (1 << (bit) ) )
 
 #endif /* _GPIO_ll */
