@@ -90,4 +90,16 @@ typedef struct _Gpio_ll_Pin_t
  */
 #define Gpio_ll_Clr(port, bit)   ( (port)->BRR |= (1 << (bit) ) )
 
+/**
+ * @brief   Configures pin as an output
+ *
+ * @param[in] port      port identifier
+ * @param[in] field     field number within the port register
+ *
+ */
+#define Gpio_ll_AsOutput(port, field)                 \
+{                                                     \
+   (port)->MODER &= ~(3 << (2 * (field)));            \
+   (port)->MODER |= (1 << (2 * (field)));             \
+}                                                     \
 #endif /* _GPIO_ll */
