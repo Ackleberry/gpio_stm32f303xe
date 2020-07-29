@@ -19,7 +19,7 @@ void tearDown(void)
 {
 }
 
-void test_GPIO_Set_ShouldSetOutputHigh(void)
+void test_Gpio_Set_Should_SetOutputHigh(void)
 {
    GPIOA->BSRR = 0;
 
@@ -36,7 +36,7 @@ void test_GPIO_Set_ShouldSetOutputHigh(void)
    TEST_ASSERT_EQUAL_HEX32(FLAG32(0) | FLAG32(5) | FLAG32(15), GPIOA->BSRR);
 }
 
-void test_GPIO_Clr_ShouldClearOutputLow(void)
+void test_Gpio_Clr_Should_ClearOutputLow(void)
 {
    GPIOA->BRR = 0;
 
