@@ -19,36 +19,41 @@ void tearDown(void)
 {
 }
 
-void test_GPIO_Set_ShouldSetOutputHigh(void)
+void test_GPIO_Set_should_SetOutputHigh(void)
 {
-   GPIOA->BSRR = 0;
+   *(PORT_1A.AtomicSet) = 0;
 
    GPIO_Set(GPIO_LL_PIN_A0);
 
-   TEST_ASSERT_EQUAL_HEX32(FLAG32(0), GPIOA->BSRR);
+   TEST_ASSERT_EQUAL_HEX32(FLAG32(0), *(PORT_1A.AtomicSet));
 
    GPIO_Set(GPIO_LL_PIN_A5);
 
-   TEST_ASSERT_EQUAL_HEX32(FLAG32(0) | FLAG32(5), GPIOA->BSRR);
+   TEST_ASSERT_EQUAL_HEX32(FLAG32(0) | FLAG32(5), *(PORT_1A.AtomicSet));
 
    GPIO_Set(GPIO_LL_PIN_A15);
 
-   TEST_ASSERT_EQUAL_HEX32(FLAG32(0) | FLAG32(5) | FLAG32(15), GPIOA->BSRR);
+   TEST_ASSERT_EQUAL_HEX32(FLAG32(0) | FLAG32(5) | FLAG32(15), *(PORT_1A.AtomicSet));
 }
 
-void test_GPIO_Clr_ShouldClearOutputLow(void)
+void test_GPIO_Clr_should_ClearOutputLow(void)
 {
-   GPIOA->BRR = 0;
+   if (PORT_1A.AtomicReset == NULL)
+   {
+      TEST_IGNORE_MESSAGE("Test not applicable to Target.");
+   }
+
+   *(PORT_1A.AtomicReset) = 0;
 
    GPIO_Clr(GPIO_LL_PIN_A0);
 
-   TEST_ASSERT_EQUAL_HEX32(FLAG32(0), GPIOA->BRR);
+   TEST_ASSERT_EQUAL_HEX32(FLAG32(0), *(PORT_1A.AtomicReset));
 
    GPIO_Clr(GPIO_LL_PIN_A5);
 
-   TEST_ASSERT_EQUAL_HEX32((FLAG32(0) | FLAG32(5)), GPIOA->BRR);
+   TEST_ASSERT_EQUAL_HEX32((FLAG32(0) | FLAG32(5)), *(PORT_1A.AtomicReset));
 
    GPIO_Clr(GPIO_LL_PIN_A15);
 
-   TEST_ASSERT_EQUAL_HEX32((FLAG32(0) | FLAG32(5) | FLAG32(15)), GPIOA->BRR);
+   TEST_ASSERT_EQUAL_HEX32((FLAG32(0) | FLAG32(5) | FLAG32(15)), *(PORT_1A.AtomicReset));
 }

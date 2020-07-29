@@ -14,6 +14,20 @@
 
 #include "stm32f303xe.h"
 
+#ifdef TEST
+typedef struct _GPIO_ll_RegisterAlias_t
+{
+   volatile uint32_t *InputData;
+   volatile uint32_t *OutputData;
+   volatile uint32_t *AtomicSet;
+   volatile uint32_t *AtomicReset;
+} GPIO_ll_RegisterAlias_t;
+
+#  define IsAliasFor(port) ((GPIO_ll_RegisterAlias_t){ &((port)->IDR), &((port)->ODR), &((port)->BSRR), &((port)->BRR)})
+
+#  define PORT_1A  IsAliasFor(GPIOA)
+#endif
+
 /**
  * @brief   Pin Port Identifier Type.
  * @details This type can be a scalar or some kind of pointer. Its use is
@@ -78,7 +92,7 @@ typedef struct _Gpio_ll_Pin_t
  * @param[in] pin       pin number within the port register
  *
  */
-#define GPIO_LL_Set(port, bit)   ( (port)->BSRR |= (1 << (bit)) )
+#define GPIO_ll_Set(port, bit)   ( (port)->BSRR |= (1 << (bit)) )
 
 /**
  * @brief   Clears pin logical state to LOW.
@@ -87,6 +101,10 @@ typedef struct _Gpio_ll_Pin_t
  * @param[in] pin       pin number within the port register
  *
  */
-#define GPIO_LL_Clr(port, bit)   ( (port)->BRR |= (1 << (bit) ) )
+#define GPIO_ll_Clr(port, bit)   ( (port)->BRR |= (1 << (bit) ) )
+
+#define GPIO_ll_SetPortOutput(port, data) ((port)->ODR = (data))
+
+#define GPIO_ll_GetPortOutput(port)       ((port)->ODR)
 
 #endif /* _GPIO_ll */
