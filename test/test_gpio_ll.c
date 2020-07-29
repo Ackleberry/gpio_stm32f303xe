@@ -4,7 +4,7 @@
  * @date    07/27/2020
  * @brief   GPIO Driver Tests for STM32F303xE
  */
-
+#include <stdio.h>
 #include "unity.h"
 #include "gpio_hal.h"
 
