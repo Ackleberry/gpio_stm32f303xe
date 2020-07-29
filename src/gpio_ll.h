@@ -73,22 +73,22 @@ typedef struct _Gpio_ll_Pin_t
 #define GPIO_LL_PIN_A15       Gpio_ll_Map(GPIOA, 15)
 
 /**
- * @brief   Sets pin logical state to HIGH.
+ * @brief   Sets pin logical state to HIGH
  *
  * @param[in] port      port identifier
- * @param[in] pin       pin number within the port register
+ * @param[in] field     field number within the port register
  *
  */
-#define Gpio_ll_Set(port, bit)   ( (port)->BSRR |= (1 << (bit)) )
+#define Gpio_ll_Set(port, field)   ( (port)->BSRR |= (1 << (field)) )
 
 /**
- * @brief   Clears pin logical state to LOW.
+ * @brief   Clears pin logical state to LOW
  *
  * @param[in] port      port identifier
- * @param[in] pin       pin number within the port register
+ * @param[in] field     field number within the port register
  *
  */
-#define Gpio_ll_Clr(port, bit)   ( (port)->BRR |= (1 << (bit) ) )
+#define Gpio_ll_Clr(port, field)   ( (port)->BRR |= (1 << (field) ) )
 
 /**
  * @brief   Configures pin as an output
