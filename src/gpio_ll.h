@@ -78,7 +78,7 @@ typedef struct _Gpio_ll_Pin_t
  * @param[in] pin       pin number within the port register
  *
  */
-#  define GPIO_LL_Set(port, bit)   ( (port)->BSRR |= (1 << (bit)) )
+#define GPIO_LL_Set(port, bit)   ( (port)->BSRR |= (1 << (bit)) )
 
 /**
  * @brief   Clears pin logical state to LOW.
