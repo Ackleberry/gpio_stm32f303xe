@@ -72,3 +72,16 @@ void test_Gpio_AsOutput_Should_ConfigurePinIntoOutputMode(void)
 
    TEST_ASSERT_EQUAL_HEX32(0x7FFFFFFD, GPIOA->MODER);
 }
+
+void test_Gpio_AsOutput_Should_DefaultToPushPullConfiguration(void)
+{
+   // Start with pins in open drain configuration.
+   GPIOA->OTYPER = 0x0000FFFF;
+   Gpio_AsOutput(GPIO_LL_PIN_A0);
+
+   TEST_ASSERT_EQUAL_HEX32(0x0000FFFE, GPIOA->OTYPER);
+
+   Gpio_AsOutput(GPIO_LL_PIN_A15);
+
+   TEST_ASSERT_EQUAL_HEX32(0x00007FFE, GPIOA->OTYPER);
+}
