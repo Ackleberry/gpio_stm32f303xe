@@ -76,7 +76,7 @@ typedef struct _Gpio_ll_Pin_t
  * @brief   Sets pin logical state to HIGH
  *
  * @param[in] port      port identifier
- * @param[in] field     field number within the port register
+ * @param[in] field     pin field within the port register
  *
  */
 #define Gpio_ll_Set(port, field)   ( (port)->BSRR |= (1 << (field)) )
@@ -85,7 +85,7 @@ typedef struct _Gpio_ll_Pin_t
  * @brief   Clears pin logical state to LOW
  *
  * @param[in] port      port identifier
- * @param[in] field     field number within the port register
+ * @param[in] field     pin field within the port register
  *
  */
 #define Gpio_ll_Clr(port, field)   ( (port)->BRR |= (1 << (field) ) )
@@ -94,7 +94,7 @@ typedef struct _Gpio_ll_Pin_t
  * @brief   Configures pin as an output
  *
  * @param[in] port      port identifier
- * @param[in] field     field number within the port register
+ * @param[in] field     pin field within the port register
  *
  */
 #define Gpio_ll_AsOutput(port, field)                 \
