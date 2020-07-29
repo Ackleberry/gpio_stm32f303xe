@@ -102,4 +102,5 @@ typedef struct _Gpio_ll_Pin_t
    (port)->MODER &= ~(3 << (2 * (field)));            \
    (port)->MODER |= (1 << (2 * (field)));             \
 }                                                     \
+
 #endif /* _GPIO_ll */
