@@ -52,7 +52,7 @@ void test_Gpio_Clr_Should_ClearOutputLow(void)
    TEST_ASSERT_EQUAL_HEX32((FLAG32(0) | FLAG32(5) | FLAG32(15)), GPIOA->BRR);
 }
 
-void test_Gpio_AsOutput_Should_SetFieldInModeRegisterToOne(void)
+void test_Gpio_AsOutput_Should_ConfigurePinIntoOutputMode(void)
 {
    GPIOA->MODER = 0x00000000;
    Gpio_AsOutput(GPIO_LL_PIN_A0);
