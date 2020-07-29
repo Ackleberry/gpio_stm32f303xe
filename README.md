@@ -1,10 +1,10 @@
 # About:
 
-
+A hardware specific implementation of the [gpio_hal.h](https://github.com/Ackleberry/gpio_hal) API for STM32F303xE microcontroller.
 
 # Adding the module to your project:
 
-
+Clone this repository into the driver section of your project. Only the contents of the `src` folder need to be included in the build. All other files are used for unit testing.
 
 # UNIT Test Setup:
 
