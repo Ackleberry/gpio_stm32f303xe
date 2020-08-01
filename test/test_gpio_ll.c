@@ -36,18 +36,18 @@ void test_Gpio_Set_Should_SetPinOutputHigh(void)
    TEST_ASSERT_EQUAL_HEX32(FLAG32(0) | FLAG32(5) | FLAG32(15), GPIOA->BSRR);
 }
 
-void test_Gpio_Clr_Should_ClearPinOutputLow(void)
+void test_Gpio_Clear_Should_ClearPinOutputLow(void)
 {
    GPIOA->BRR = 0;
-   Gpio_Clr(GPIO_LL_PIN_A0);
+   Gpio_Clear(GPIO_LL_PIN_A0);
 
    TEST_ASSERT_EQUAL_HEX32(FLAG32(0), GPIOA->BRR);
 
-   Gpio_Clr(GPIO_LL_PIN_A5);
+   Gpio_Clear(GPIO_LL_PIN_A5);
 
    TEST_ASSERT_EQUAL_HEX32((FLAG32(0) | FLAG32(5)), GPIOA->BRR);
 
-   Gpio_Clr(GPIO_LL_PIN_A15);
+   Gpio_Clear(GPIO_LL_PIN_A15);
 
    TEST_ASSERT_EQUAL_HEX32((FLAG32(0) | FLAG32(5) | FLAG32(15)), GPIOA->BRR);
 }

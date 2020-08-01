@@ -212,7 +212,7 @@ typedef struct _Gpio_ll_Pin_t
  * @param[in] field     pin field within the port register
  *
  */
-#define Gpio_ll_Clr(port, field)   ( (port)->BRR |= (1 << (field) ) )
+#define Gpio_ll_Clear(port, field)   ( (port)->BRR |= (1 << (field) ) )
 
 /**
  * @brief   Toggles the pin logical state.
