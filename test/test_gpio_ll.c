@@ -20,7 +20,7 @@ void tearDown(void)
 
 }
 
-void test_Gpio_Set_Should_SetOutputHigh(void)
+void test_Gpio_Set_Should_SetPinOutputHigh(void)
 {
    GPIOA->BSRR = 0;
    Gpio_Set(GPIO_LL_PIN_A0);
@@ -36,7 +36,7 @@ void test_Gpio_Set_Should_SetOutputHigh(void)
    TEST_ASSERT_EQUAL_HEX32(FLAG32(0) | FLAG32(5) | FLAG32(15), GPIOA->BSRR);
 }
 
-void test_Gpio_Clr_Should_ClearOutputLow(void)
+void test_Gpio_Clr_Should_ClearPinOutputLow(void)
 {
    GPIOA->BRR = 0;
    Gpio_Clr(GPIO_LL_PIN_A0);
@@ -84,4 +84,21 @@ void test_Gpio_AsOutput_Should_DefaultToPushPullConfiguration(void)
    Gpio_AsOutput(GPIO_LL_PIN_A15);
 
    TEST_ASSERT_EQUAL_HEX32(0x00007FFE, GPIOA->OTYPER);
+}
+
+void test_Gpio_Toggle_Should_TogglePinOutput(void)
+{
+   // From HIGH to LOW
+   GPIOA->ODR = 0x0000FFFF;
+   Gpio_Toggle(GPIO_LL_PIN_A0);
+   TEST_ASSERT_EQUAL_HEX32(0x0000FFFE, GPIOA->ODR);
+   Gpio_Toggle(GPIO_LL_PIN_A15);
+   TEST_ASSERT_EQUAL_HEX32(0x00007FFE, GPIOA->ODR);
+
+   // From LOW to HIGH
+   GPIOA->ODR = 0x00000000;
+   Gpio_Toggle(GPIO_LL_PIN_A0);
+   TEST_ASSERT_EQUAL_HEX32(0x00000001, GPIOA->ODR);
+   Gpio_Toggle(GPIO_LL_PIN_A15);
+   TEST_ASSERT_EQUAL_HEX32(0x00008001, GPIOA->ODR);
 }

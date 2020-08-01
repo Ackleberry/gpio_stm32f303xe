@@ -215,6 +215,15 @@ typedef struct _Gpio_ll_Pin_t
 #define Gpio_ll_Clr(port, field)   ( (port)->BRR |= (1 << (field) ) )
 
 /**
+ * @brief   Toggles the pin logical state.
+ *
+ * @param[in] port      port identifier
+ * @param[in] field     pin field within the port register
+ *
+ */
+#define Gpio_ll_Toggle(port, field)   ( (port)->ODR ^= (1 << (field) ) )
+
+/**
  * @brief   Configures pin as a push pull output
  *
  * @param[in] port      port identifier
