@@ -238,6 +238,19 @@ typedef struct _Gpio_ll_Pin_t
 } \
 
 /**
+ * @brief   Configures pin as a input with no pull up/down resistor.
+ *
+ * @param[in] port      port identifier
+ * @param[in] field     pin field within the port register
+ *
+ */
+#define Gpio_ll_AsInput(port, field) \
+{ \
+   (port)->PUPDR &= ~(1 << (field)); \
+   (port)->MODER &= ~(3 << (2 * (field))); \
+} \
+
+/**
  * @brief   Determines if the pin is set high. Evaluates to true or false.
  *
  * @param[in] port      port identifier

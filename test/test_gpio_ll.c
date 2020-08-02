@@ -138,3 +138,28 @@ void test_Gpio_IsSet_Should_ReturnFalseIfPinIsLow(void)
 
    TEST_ASSERT_FALSE(Gpio_IsSet(GPIO_LL_PIN_A11));
 }
+
+void test_Gpio_AsInput_Should_ConfigurePinToInputMode(void)
+{
+   GPIOA->MODER = 0xFFFFFFFF;
+   Gpio_AsInput(GPIO_LL_PIN_A0);
+
+   TEST_ASSERT_EQUAL_HEX32(0xFFFFFFFC, GPIOA->MODER);
+
+   Gpio_AsInput(GPIO_LL_PIN_A15);
+
+   TEST_ASSERT_EQUAL_HEX32(0x3FFFFFFC, GPIOA->MODER);
+}
+
+void test_Gpio_AsInput_Should_DefaultToNoPullUpPullDown(void)
+{
+   // Start with pins in open drain configuration.
+   GPIOA->PUPDR = 0xFFFFFFFF;
+   Gpio_AsInput(GPIO_LL_PIN_A0);
+
+   TEST_ASSERT_EQUAL_HEX32(0xFFFFFFFE, GPIOA->PUPDR);
+
+   Gpio_AsInput(GPIO_LL_PIN_A15);
+
+   TEST_ASSERT_EQUAL_HEX32(0xFFFF7FFE, GPIOA->PUPDR);
+}
