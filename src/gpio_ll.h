@@ -237,4 +237,13 @@ typedef struct _Gpio_ll_Pin_t
    (port)->MODER |= (1 << (2 * (field))); \
 } \
 
+/**
+ * @brief   Determines if the pin is set high. Evaluates to true or false.
+ *
+ * @param[in] port      port identifier
+ * @param[in] field     pin field within the port register
+ *
+ */
+#define Gpio_ll_IsSet(port, field)   ( ((port)->IDR & (1 << (field))) )
+
 #endif /* _GPIO_ll */

@@ -102,3 +102,38 @@ void test_Gpio_Toggle_Should_TogglePinOutput(void)
    Gpio_Toggle(GPIO_LL_PIN_A15);
    TEST_ASSERT_EQUAL_HEX32(0x00008001, GPIOA->ODR);
 }
+
+void test_Gpio_IsSet_Should_ReturnTrueIfPinIsHigh(void)
+{
+   // Fake GPIO Input register data
+   GPIOA->IDR = 0x0000F731;
+
+   TEST_ASSERT_TRUE(Gpio_IsSet(GPIO_LL_PIN_A0));
+
+   TEST_ASSERT_TRUE(Gpio_IsSet(GPIO_LL_PIN_A4));
+   TEST_ASSERT_TRUE(Gpio_IsSet(GPIO_LL_PIN_A5));
+
+   TEST_ASSERT_TRUE(Gpio_IsSet(GPIO_LL_PIN_A8));
+   TEST_ASSERT_TRUE(Gpio_IsSet(GPIO_LL_PIN_A9));
+   TEST_ASSERT_TRUE(Gpio_IsSet(GPIO_LL_PIN_A10));
+
+   TEST_ASSERT_TRUE(Gpio_IsSet(GPIO_LL_PIN_A12));
+   TEST_ASSERT_TRUE(Gpio_IsSet(GPIO_LL_PIN_A13));
+   TEST_ASSERT_TRUE(Gpio_IsSet(GPIO_LL_PIN_A14));
+   TEST_ASSERT_TRUE(Gpio_IsSet(GPIO_LL_PIN_A15));
+}
+
+void test_Gpio_IsSet_Should_ReturnFalseIfPinIsLow(void)
+{
+   // Fake GPIO Input register data
+   GPIOA->IDR = 0x0000F731;
+
+   TEST_ASSERT_FALSE(Gpio_IsSet(GPIO_LL_PIN_A1));
+   TEST_ASSERT_FALSE(Gpio_IsSet(GPIO_LL_PIN_A2));
+   TEST_ASSERT_FALSE(Gpio_IsSet(GPIO_LL_PIN_A3));
+
+   TEST_ASSERT_FALSE(Gpio_IsSet(GPIO_LL_PIN_A6));
+   TEST_ASSERT_FALSE(Gpio_IsSet(GPIO_LL_PIN_A7));
+
+   TEST_ASSERT_FALSE(Gpio_IsSet(GPIO_LL_PIN_A11));
+}
