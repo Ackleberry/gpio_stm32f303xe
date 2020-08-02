@@ -54,8 +54,8 @@ typedef struct _Gpio_ll_Pin_t
 
 /**
  * @brief   Pin constants that are mapped to their respective pin identifier.
- *          These constants should only be used to define project specific pin
- *          constants.
+ *          For portability, these constants should only be used to define
+ *          project specific pin constants.
  *
  *          Example:         #define GPIO_GREEN_LED       GPIO_LL_PIN_A5
  *
